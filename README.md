@@ -1,4 +1,4 @@
-﻿\1. Pertama buka .pcapng soal 1-2 dan masukkan http ke display filter
+﻿1. Pertama buka .pcapng soal 1-2 dan masukkan http ke display filter
 
 ![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.001.png)
 
