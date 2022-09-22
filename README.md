@@ -59,7 +59,7 @@ Kemudian masukkan ip.addr == 10.15.40.69 di display filter dari koneksi yang and
 ![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.001.png)
 
 
-8. Kita coba memberikan filter ip.src == 127.0.0.1 dan mendapatkan informasi berupa clue password dan port yaitu 9002
+8. Kita coba memberikan filter data contains jawaban karena mereka sedang bertukarang jawaban, maka kita perlu mencari paket yang memuat string data didalamnya dan mendapatkan informasi berupa clue password dan port yaitu 9002
 
 ![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.006.png)
 
