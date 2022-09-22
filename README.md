@@ -61,7 +61,7 @@ Kemudian masukkan ip.addr == 10.15.40.69 di display filter dari koneksi yang and
 
 8. Kita coba memberikan filter data contains jawaban karena mereka sedang bertukarang jawaban, maka kita perlu mencari paket yang memuat string data didalamnya dan mendapatkan informasi berupa clue password dan port yaitu 9002
 
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.006.png)
+![Kali Linux - VMware Workstation 16 Player 9_22_2022 10_26_17 AM](https://user-images.githubusercontent.com/73457972/191652204-a6a01962-667a-4e32-a1cb-09948770404b.png)
 
 ![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.007.png)
 
