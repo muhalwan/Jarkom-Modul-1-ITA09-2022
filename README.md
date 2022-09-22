@@ -59,32 +59,26 @@ Kemudian masukkan ip.addr == 10.15.40.69 di display filter dari koneksi yang and
 ![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.001.png)
 
 
-8. Kita coba memberikan filter data contains jawaban karena mereka sedang bertukarang jawaban, maka kita perlu mencari paket yang memuat string data didalamnya dan mendapatkan informasi berupa clue password dan port yaitu 9002
+8. Untuk mencari clue-clue tentang percakapan mereka, kita pertama menerapkan display filter yaitu data contains jawaban, disini kita akan mencari paket yang memiliki data berupa jawaban karena mereka sedang membicarakan tentang jawaban soal shift.  Lalu, pada TCP Stream dari filter yang telah diterapkan kita mendapatkan clue-clue berupa: enkripsi dengan openssl metode des3, terdapat file salted, komunikasi lewat tcp port 9002, dan password file adalah nama karakter anime kembar lima.  
 
-![Kali Linux - VMware Workstation 16 Player 9_22_2022 10_26_17 AM](https://user-images.githubusercontent.com/73457972/191652204-a6a01962-667a-4e32-a1cb-09948770404b.png)
+![image](https://user-images.githubusercontent.com/73457972/191682610-715c9f1a-1b10-425f-aafe-f20892805254.png)
 
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.007.png)
+![image](https://user-images.githubusercontent.com/73457972/191682642-2284645c-18be-46cb-a007-df26dbc1136a.png)
 
+ 
+9. Dari clue yang telah didapatkan kita mengetahui bahwa file salt yang mereka kirim menggunakan tcp port 9002 kita akan menerapkan display filter berupa tcp.port == 9002 karena mereka saling komunikasi keluar-masuk lewat port 9002 tersebut. Setelah kita dapatkan data saltnya kita akan save raw dengan nama ITA09.des3.
 
-9. Setelah port diketahui kita coba filter dengan tcp.dstport == 9002 lalu kita akan mendapatkan data salted nya
+![image](https://user-images.githubusercontent.com/73457972/191682717-a0676307-092e-4061-bca7-b517ef4178bc.png)
 
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.008.png)![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.009.png)
-
-Kita simpan dengan format ITA09.des
-
-Lalu kita decrypt file salted tersebut dengan openssl menggunakan metode des3
-
-Dengan command openssl des3 -d -in ITA09.des -out flag.txt
-
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.010.png)
-
-Disini kita memerlukan password untuk mendecrypt, kita memerlukan petunjuk lain dari capture wireshark.
-
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.011.png)
-
-Dari sini, cluenya adalah kesamaan, berdasarkan anime kembar lima tersebut yang sama adalah orang tua mereka atau keluarga jadi passwordnya mungkin “nakano” saat dicoba berhasil.
+![image](https://user-images.githubusercontent.com/73457972/191682736-e4a46fef-5bfe-49fe-899b-e2e2276f3c0e.png)
 
 
-10. Flag: JaRkOm2022{8uK4N\_CtF\_k0k\_h3h3h3}
+10. Berdasarkan clue dari nomor 8 kita mengetahui bahwa enkripsi tersebut menggunakan openssl dengan metode des3, kita bisa mengenkripsinya dengan command openssl des3 -d -in ITA09.des3 -out flag.txt.
 
-![](Aspose.Words.95029e30-4cf8-431f-be7f-f10787143d51.010.png)
+![image](https://user-images.githubusercontent.com/73457972/191682829-79c66533-68ff-4b4f-85b1-cecedda240ad.png)
+
+Tetapi kita masih belum tahu password dari enkripsi tersebut. Kita akan mencari clue lain dari paket pcapng dengan filter data contains password. Lalu, kita mendapatkan clue tambahan bahwa “passwordnya bisa jadi kesamaan diantara kita” dari sini berdasarkan clue pertama nama karakter yang memiliki kesamaan di anime kembar lima adalah nama “nakano” yang merupakan nama kembar lima tersebut. Setelah memasukkan password tersebut kita berhasil mendapatkan flagnya “JaRkOm2022{8uK4N_CtF_k0k_h3h3h3}”
+
+![image](https://user-images.githubusercontent.com/73457972/191682857-daeaf318-f924-4035-84ca-7e4251ae0c80.png)
+
+![image](https://user-images.githubusercontent.com/73457972/191682868-5960c9ce-8985-4356-b366-1541a08074d2.png)
